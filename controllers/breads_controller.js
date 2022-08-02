@@ -5,6 +5,7 @@ const Bread = require ('../models/bread.js')
 
 
 
+
 // INDEX
 breads.get('/', (req, res) => {
     res.render('Index',
@@ -94,4 +95,6 @@ breads.post('/', (req, res) => {
 
   
 
-module.exports = breads
+// module.exports = breads
+module.exports = Bread
+
