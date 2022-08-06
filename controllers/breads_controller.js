@@ -1,6 +1,7 @@
 const express = require('express')
 const breads = express.Router()
 const Bread = require ('../models/bread.js')
+const Baker = require ('../models/baker.js')
 
 
 
@@ -21,7 +22,12 @@ breads.get('/', (req, res) => {
 
 // NEW
 breads.get('/new', (req, res) => {
-    res.render('new')
+  Baker.find()
+  .then(foundBakers => {
+    res.render('new', {
+      bakers: foundBakers
+    })
+})
 })
 
 // DELETE
@@ -100,9 +106,10 @@ breads.get('/:id', (req, res) => {
       res.render('404')
     }
   })
+
+ 
   
-  
-  //SEED
+  // SEED
   // breads.get('/data/seed', (req, res) => {
   //   Bread.insertMany([[
   //     {
@@ -133,13 +140,13 @@ breads.get('/:id', (req, res) => {
   // })
   
   
-  
+  module.exports = breads
   
   
   
 
   
 
-module.exports = breads
+
 
 
